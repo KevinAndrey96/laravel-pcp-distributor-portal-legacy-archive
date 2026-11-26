@@ -1,27 +1,48 @@
-# PCP Distributor Portal (Legacy Archive)
+# PCP: portal Laravel de distribuidores (archivo histórico)
 
-[![Unified Monorepo](https://img.shields.io/badge/Unified%20Monorepo-pcp-industrial-wholesale-ecommerce-blue.svg)](https://github.com/KevinAndrey96/pcp-industrial-wholesale-ecommerce)
-[![Status: Historical Archive](https://img.shields.io/badge/Status-Historical%20Archive-lightgrey.svg)](https://github.com/KevinAndrey96/pcp-industrial-wholesale-ecommerce)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/KevinAndrey96/pcp-industrial-wholesale-ecommerce/blob/master/LICENSE)
+![Estado: archivo histórico](https://img.shields.io/badge/Estado-archivo%20hist%C3%B3rico-lightgrey) ![Laravel 8](https://img.shields.io/badge/Laravel%208-FF2D20) ![PHP 7.4+](https://img.shields.io/badge/PHP%207.4%2B-777BB4) ![MySQL](https://img.shields.io/badge/MySQL-4479A1)
 
-> [!IMPORTANT]
-> **This repository is preserved as a historical component archive.**
-> Development, maintenance, and full-stack containerization have been unified into the flagship production monorepo:
->
-> 🚀 **[KevinAndrey96/pcp-industrial-wholesale-ecommerce](https://github.com/KevinAndrey96/pcp-industrial-wholesale-ecommerce)**
->
-> Please refer to the main repository for the complete architecture, Docker Compose orchestration, automated test suites, and active documentation.
+> [!NOTE]
+> Código original del portal con el que los distribuidores de PCP administraban precios, catálogo y pedidos de ferreterías (2021). El producto continúa en **[pcp-industrial-wholesale-ecommerce](https://github.com/KevinAndrey96/pcp-industrial-wholesale-ecommerce)**, que reúne todos sus componentes con documentación actualizada.
 
----
+## Qué contiene
 
-## 📌 Historical Overview
+- Listas de precios y elección de la lista activa.
+- Catálogo de productos con código e imagen, e importación y exportación con Laravel Excel.
+- Pedidos con detalle de productos y facturación de cada orden.
+- Gestión de usuarios, distribuidores y ferreterías.
 
-This repository preserves the historical regional master distributor ordering hub component originally developed for the PCP Wholesale E-Commerce Platform. It supported tiered pricing, volume discounts, and purchase order tracking.
+## Stack original
 
-All components, database schemas, and workflows have been merged and modernized into the primary repository: **[pcp-industrial-wholesale-ecommerce](https://github.com/KevinAndrey96/pcp-industrial-wholesale-ecommerce)**.
+| Componente | Tecnología |
+| :--- | :--- |
+| Framework | Laravel 8 |
+| Lenguaje | PHP 7.4 u 8.0 |
+| Base de datos | MySQL |
+| Librerías | Laravel Excel, DomPDF, Laravel Mix |
 
----
+## Ejecutarlo localmente
 
-## 📄 License
+```bash
+cp .env.example .env    # completa DB_* y MAIL_* con valores locales
+composer install        # vendor/ no se versiona
+php artisan key:generate
+php artisan migrate
+php artisan serve       # http://localhost:8000
+```
 
-This historical archive is part of the project licensed under the MIT License. See the main repository for details.
+Requiere PHP 7.4 u 8.0, Composer 2 y MySQL. Laravel 8 dejó de recibir parches de seguridad en enero de 2023.
+
+## Estado del repositorio
+
+- Se conserva sin cambios funcionales como referencia del código original (2021).
+- No recibe actualizaciones de dependencias; el mantenimiento ocurre en [pcp-industrial-wholesale-ecommerce](https://github.com/KevinAndrey96/pcp-industrial-wholesale-ecommerce).
+- En noviembre de 2026 se depuró el historial completo: se retiraron `vendor/` y `node_modules/`, un `public.zip` de 52 MB, `.idea/` y el `.env` con credenciales. Todos los commits conservan su fecha original.
+
+## Autoría
+
+Kevin Andrey Herrera Silva ([@KevinAndrey96](https://github.com/KevinAndrey96)), con aportes de Cristian Delgado.
+
+## Licencia
+
+Código desarrollado para un cliente y publicado como muestra de portafolio. No incluye licencia de código abierto: todos los derechos reservados.
